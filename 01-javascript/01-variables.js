@@ -105,5 +105,79 @@ const javier = {
 }
 
 
+//PROPIEDADES DE UN OBJETO
+// Acceder por llave o por punto
+console.log(javier.edad);
+console.log(javier["edad"]);
+
+//Para modificar
+javier.edad = 35;
+javier["nombre"]= "Javiere"
+
+console.log(javier.edad);
+console.log(javier["nombre"]);
+
+//NOTA: Nosotros podemos modificar las propiedades del objeto, pero no el general
+
+//Clase Object
+console.log(Object.keys(javier));
+console.log(Object.values(javier));
+
+//Borrar propiedades
+
+
+//Variables por valor o referencia
+// Variables por valor en JS son las primitivas: number, string y boolean
+let edadJavier = 32;
+let edadAlex = edadJavier; //Guardamos una primitiva en otra variable
+                            //Variables por valor
+
+console.log(edadJavier); //32
+console.log(edadAlex); //32
+edadJavier = edadAlex + 1;
+console.log(edadJavier); //33
+console.log(edadAlex); //32
+
+// Variables por referencia
+// let rafael = {
+//     nombre: "Rafael"
+// };
+//
+// let lenin = rafael;
+// console.log(rafael);
+// console.log(lenin);
+// lenin.nombre = "Lenin";
+// console.log(rafael);
+// console.log(lenin); // Ambos tienen el nombre de Lenin
+// //Apuntan al mismo objeto
+//
+// delete rafael.nombre;
+// console.log(rafael);
+// console.log(lenin);
+
+//Clonar objetos
+let rafael = {
+    nombre: "Rafael"
+};
+
+let lenin = Object.assign({},rafael);
+console.log(rafael);
+console.log(lenin);
+lenin.nombre = "Lenin";
+console.log(rafael);
+console.log(lenin); // Ya tenemos diferentes resulatdos
+
+//Clonar arreglos
+let arregloNumeros = [1,2,3,4];
+let arreglo2 = Object.assign({},arregloNumeros);
+console.log(arregloNumeros);
+console.log(arreglo2);
+arreglo2[0] = 100;
+console.log(arregloNumeros);
+console.log(arreglo2);
+
+
+
+
 
 
