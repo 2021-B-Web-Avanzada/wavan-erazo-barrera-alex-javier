@@ -139,3 +139,23 @@ every(valorActual => valorActual.nota > 14);
 console.log("Hay notas mayor a 14: ", resultadoEvery);
 
 
+//REDUCE
+//A reduce solo le importa el acumulador y el calculo a aplicar
+//izq a derecha
+//Tenemos 100 puntos y queremos ir restando varias veces
+//100 -1 -2 -3 -4  -5 -6 -7 -8
+//(funcion(valorAcum, valorActual, indice, arreglo), lo que tenemos al inicio)
+const respuestaReduce = arreglo
+    .reduce(
+        function (valorAcumulado, valorActual){
+        return valorAcumulado-valorActual.nota;
+        },
+        100 //Acumulador
+    );
+console.log('Respuesta REDUCE: ', respuestaReduce );
+//REDUCE RIGHT
+//empieza en la derecha y termina en la izquierda
+//Tenemos 0 items y queremos ir sumando todo lo de un arreglo
+//accum = 0 ; +1 +2 +3 +4 +5
+
+
