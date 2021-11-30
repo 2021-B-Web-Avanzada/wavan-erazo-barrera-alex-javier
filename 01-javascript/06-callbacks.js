@@ -10,17 +10,16 @@ fs.readFile(
         if(error){
             console.log(`ERROR: ${error}`);
         } else {
-            console.log(`Variables: ${contenido}`); //Esto demora en responder y por eso se ejecuta al final
             //06-ejemplo.txt -> Hola
             fs.readFile(
                 './06-ejemplo.txt',
                 'utf-8',
-                (error, contenido)=>{
+                (errorVar, contenidoVar)=>{
 
-                    if(error){
-                        console.log(`ERROR: ${error}`);
+                    if(errorVar){
+                        console.log(`ERROR: ${errorVar}`);
                     } else {
-                        console.log(`Ejemplo: ${contenido}`); //Esto demora en responder y por eso se ejecuta al final
+                        console.log(contenido, contenidoVar); //Esto demora en responder y por eso se ejecuta al final
                     }
                 }
             );
