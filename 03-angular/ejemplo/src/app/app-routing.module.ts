@@ -7,6 +7,8 @@ import {RutaInicioComponent} from "./rutas/ruta-inicio/ruta-inicio.component";
 import {RutaUsuarioComponent} from "./rutas/ruta-usuario/ruta-usuario.component";
 import {RutaPostComponent} from "./rutas/ruta-post/ruta-post.component";
 import {RutaAppComponent} from "./rutas/ruta-app/ruta-app.component";
+import {EstaLogeadoGuard} from "./servicios/auth/esta-logeado.guard";
+import {EsAdministradorGuard} from "./servicios/auth/es-administrador.guard";
 
 //RUTAS NECESASRIAS
 //login
@@ -22,7 +24,13 @@ const routes: Routes = [
 
   },
   {
+    path: 'lazy-inventario',
+    loadChildren: ()=> import('./modules/modulo-inventario/modulo-inventario.module')
+      .then(m=> m.ModuloInventarioModule)
+  },
+  {
     path: 'inicio',
+    canActivate: [EstaLogeadoGuard], //Aqui podemos dar permiso
     component: RutaInicioComponent,
 
   },
@@ -37,6 +45,7 @@ const routes: Routes = [
       {
         path: 'post',
         component: RutaPostComponent,
+        canActivate: [EsAdministradorGuard]
       },
 
     ]
