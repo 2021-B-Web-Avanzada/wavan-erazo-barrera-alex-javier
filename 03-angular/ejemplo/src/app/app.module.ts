@@ -3,7 +3,6 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-<<<<<<< HEAD
 import { RutaForbiddenComponent } from './rutas/ruta-forbidden/ruta-forbidden.component';
 import { RutaNotFoundComponent } from './rutas/ruta-not-found/ruta-not-found.component';
 import { RutaLoginComponent } from './rutas/ruta-login/ruta-login.component';
@@ -15,9 +14,12 @@ import {EstaLogeadoGuard} from "./servicios/auth/esta-logeado.guard";
 import {AuthService} from "./servicios/auth/auth.service";
 import {EsAdministradorGuard} from "./servicios/auth/es-administrador.guard";
 import {BannerImagenesModule} from "./componentes/banner-imagenes/banner-imagenes.module";
+import { HttpClientModule} from "@angular/common/http";
+
+
 
 @NgModule({
-  declarations: [ //Componentes
+  declarations: [
     AppComponent,
     RutaForbiddenComponent,
     RutaNotFoundComponent,
@@ -25,20 +27,14 @@ import {BannerImagenesModule} from "./componentes/banner-imagenes/banner-imagene
     RutaUsuarioComponent,
     RutaInicioComponent,
     RutaPostComponent,
-    RutaAppComponent
-=======
-import { RutaLoginComponent } from './rutas/ruta-login/ruta-login.component';
+    RutaAppComponent,
 
-@NgModule({
-  declarations: [
-    AppComponent,
-    RutaLoginComponent
->>>>>>> desarrollo
   ],
   imports: [ //Modulos
     BrowserModule,
     AppRoutingModule,
-    BannerImagenesModule
+    BannerImagenesModule,
+    HttpClientModule
   ],
   providers: [ //Servicios
     AuthService,
