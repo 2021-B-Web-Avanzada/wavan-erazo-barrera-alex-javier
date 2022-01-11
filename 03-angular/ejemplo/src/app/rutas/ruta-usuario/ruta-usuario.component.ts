@@ -9,7 +9,7 @@ import {error} from "@angular/compiler/src/util";
 })
 export class RutaUsuarioComponent implements OnInit {
 
-  constructor(private readonly userJphService: UserJPHService) { }
+  constructor(private readonly userJphService: UserJphService) { }
 
   ngOnInit(): void {
     this.userJphService
