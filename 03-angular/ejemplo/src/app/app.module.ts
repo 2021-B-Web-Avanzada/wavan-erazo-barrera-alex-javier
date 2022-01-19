@@ -15,7 +15,8 @@ import {AuthService} from "./servicios/auth/auth.service";
 import {EsAdministradorGuard} from "./servicios/auth/es-administrador.guard";
 import {BannerImagenesModule} from "./componentes/banner-imagenes/banner-imagenes.module";
 import { HttpClientModule} from "@angular/common/http";
-import {FormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import { RutaUsuarioPerfilComponent } from './rutas/ruta-usuario-perfil/ruta-usuario-perfil.component';
 
 
 
@@ -29,6 +30,7 @@ import {FormsModule} from "@angular/forms";
     RutaInicioComponent,
     RutaPostComponent,
     RutaAppComponent,
+    RutaUsuarioPerfilComponent,
 
 
   ],
@@ -37,7 +39,8 @@ import {FormsModule} from "@angular/forms";
     AppRoutingModule,
     BannerImagenesModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [ //Servicios
     AuthService,
