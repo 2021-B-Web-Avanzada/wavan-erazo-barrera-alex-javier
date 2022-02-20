@@ -14,6 +14,8 @@ import {InputNumberModule} from 'primeng/inputnumber';
 import {FileUploadModule} from 'primeng/fileupload'
 import {RatingModule} from 'primeng/rating'
 import { FormsModule } from '@angular/forms';
+import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 @NgModule({
@@ -36,6 +38,8 @@ import { FormsModule } from '@angular/forms';
     FileUploadModule,
     RatingModule,
     FormsModule,
+    //BrowserModule,
+    //BrowserAnimationsModule
   ]
 })
 export class MarcasModule { }

@@ -18,8 +18,15 @@ export class TableComponentComponent implements OnInit {
   brand!: Marca;
   brandDialog?: boolean;
   submitted?: boolean;
+  es_nacionalOptions = [
+    {label: 'SI', value: true},
+    {label: 'NO', value: false}
+
+  ];
   constructor(
-    private serviceMarca: MarcaServiceService
+    private serviceMarca: MarcaServiceService,
+    private messageService: MessageService,
+    private confirmationService: ConfirmationService
   ) { }
 
   ngOnInit(): void {
@@ -31,15 +38,7 @@ export class TableComponentComponent implements OnInit {
   }
 
   openNew(){
-   this.brand = {
-    id_marca: 0,
-    nombre: '',
-    es_nacional: true,
-    acciones: 0,
-    year: 0,
-    fundador: ''
-
-   }
+   this.brand = {}
     this.submitted = false;
     this.brandDialog = true;
 
@@ -51,10 +50,21 @@ export class TableComponentComponent implements OnInit {
   }
 
   hideDialog(){
+    this.brandDialog = false;
+    this.submitted=false;
 
   }
 
-  saveBrand(){
+  saveBrand() {
+    this.submitted = true;
+    console.log(this.brand)
+    this.serviceMarca.saveMarca(this.brand)
+    .subscribe(resp =>{
+      console.log(JSON.parse(resp.toString())) //no llega
+    })
+    this.brands.push(this.brand)
+      this.hideDialog()
+
 
   }
 
@@ -63,6 +73,19 @@ export class TableComponentComponent implements OnInit {
   }
 
   deleteBrand( brand: Marca){
+    this.confirmationService.confirm({
+      message:'Estas seguro de borrar ' + brand.nombre + '?',
+      header: 'Confirm',
+      icon: 'pi pi-exclamation-triangle',
+      accept: () => {
+        this.serviceMarca.deleteMarca(brand.id_marca!.toString()).subscribe(()=>{
+          this.brands = this.brands.filter(val => val.id_marca !== brand.id_marca);
+          this.brand = {};
+          this.messageService.add({severity:'success', summary: 'Successful', detail: 'Marca Borrada', life: 3000});
+        })
+
+    }
+    })
 
   }
   applyFilterGlobal($event: any, stringVal: string) {

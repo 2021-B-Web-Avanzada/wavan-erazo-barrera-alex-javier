@@ -21,7 +21,7 @@
               <h5>Gestionar Marcas</h5>
               <span class="input-icons">
                   <i class="pi pi-search icon"></i>
-                  <input class="input-field" pInputText type="text" (input)="dt.filterGlobal($event, 'contains')" placeholder="Buscar..."/>
+                  <input class="input-field form-control" pInputText type="text" (input)="dt.filterGlobal($event, 'contains')" placeholder="Buscar..."/>
               </span>
           </div>
       </ng-template>
@@ -70,9 +70,32 @@
   <ng-template pTemplate="content">
       <!-- LLENAR CAMPOS PARA NUEVOS -->
       <div class="field">
-          <label for="nombre">Name</label>
-          <input type="text" pInputText id="nombre" [(ngModel)]="brand.nombre" required autofocus />
-          <small class="p-error" *ngIf="submitted && !brand.nombre">Name is required.</small>
+          <label class="form-label" for="nombre">Nombre</label>
+          <input class="form-control" type="text" pInputText id="nombre" [(ngModel)]="brand.nombre" required autofocus />
+          <small class="p-error" *ngIf="submitted && !brand.nombre">Nombre es requerido.</small>
+      </div>
+      <div class="field mt-3">
+        <label for="es_nacional">Es Nacional?</label>
+        <p-dropdown [(ngModel)]="brand.es_nacional" inputId="es_nacional" [options]="es_nacionalOptions" placeholder="Select">
+            <ng-template let-option pTemplate="item">
+                <span [class]="'product-badge status-' + option.value">{{option.label}}</span>
+            </ng-template>
+        </p-dropdown>
+    </div>
+      <div class="field mt-3">
+        <label class="form-label" for="acciones">Acciones</label>
+        <p-inputNumber id="acciones" [(ngModel)]="brand.acciones" ></p-inputNumber>
+        <small class="p-error" *ngIf="submitted && !brand.acciones">Valor de acciones requerido</small>
+      </div>
+      <div class="field mt-3">
+        <label class="form-label" for="year">Year</label>
+        <p-inputNumber id="year" [(ngModel)]="brand.year" ></p-inputNumber>
+        <small class="p-error" *ngIf="submitted && !brand.year">Valor de year requerido</small>
+      </div>
+      <div class="field mt-3">
+        <label class="form-label" for="fundador">Fundador</label>
+        <input class="form-control" type="text" pInputText id="fundador" [(ngModel)]="brand.fundador" required autofocus />
+        <small class="p-error" *ngIf="submitted && !brand.fundador">Valor de fundador requerido</small>
       </div>
 
   </ng-template>

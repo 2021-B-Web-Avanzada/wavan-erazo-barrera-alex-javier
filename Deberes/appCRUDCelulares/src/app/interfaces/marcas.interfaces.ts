@@ -8,12 +8,12 @@
 // match the expected interface, even if the JSON is valid.
 
 export interface Marca {
-  id_marca:    number;
-  nombre:      string;
-  es_nacional: boolean;
-  acciones:    number;
-  year:        number;
-  fundador:    string;
+  id_marca?:    number;
+  nombre?:      string;
+  es_nacional?: boolean;
+  acciones?:    number;
+  year?:        number;
+  fundador?:    string;
 }
 
 // Converts JSON strings to/from your types

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from 'src/environments/environment.prod';
 import { Marca } from '../interfaces/marcas.interfaces';
 import { tap } from 'rxjs';
@@ -17,4 +17,17 @@ export class MarcaServiceService {
   getMarcas(){
     return this.http.get<Marca[]>(this.url + '/api')
   }
+
+  saveMarca(marca : Marca){
+    const httpOptions = {
+      headers: new HttpHeaders({'Content-Type': 'application/json'})
+    }
+    return this.http.post(this.url+'/api', JSON.stringify(marca), httpOptions)
+  }
+
+  deleteMarca(id_marca: string){
+
+    return this.http.delete(this.url+'/api/' + id_marca)
+  }
+
 }
