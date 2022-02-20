@@ -1,4 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
+import { Router } from '@angular/router';
 import { ConfirmationService, MessageService } from 'primeng/api';
 import { Table } from 'primeng/table';
 import { Marca } from 'src/app/interfaces/marcas.interfaces';
@@ -26,7 +27,8 @@ export class TableComponentComponent implements OnInit {
   constructor(
     private serviceMarca: MarcaServiceService,
     private messageService: MessageService,
-    private confirmationService: ConfirmationService
+    private confirmationService: ConfirmationService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -115,6 +117,8 @@ export class TableComponentComponent implements OnInit {
 
   }
   getCellphones(brand: Marca){
+    this.router.navigate(['marcas/celulares'],
+      {queryParams:{id: brand.id_marca}})
 
   }
 
