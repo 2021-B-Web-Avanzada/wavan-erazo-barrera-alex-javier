@@ -58,19 +58,45 @@ export class TableComponentComponent implements OnInit {
   saveBrand() {
     this.submitted = true;
     console.log(this.brand)
-    this.serviceMarca.saveMarca(this.brand)
-    .subscribe(resp =>{
-      console.log(JSON.parse(resp.toString())) //no llega
-    })
-    this.brands.push(this.brand)
-      this.hideDialog()
+    //busca si existe en nuestro arreglo
+    const searching = this.brands.find(br =>
+      this.brand.id_marca === br.id_marca
+    )
+    console.log(`Resultado de la busqueda: ${searching}`)
+    // si no existe crear
+    if(searching){
+      console.log(`Si existe...`)
+      this.serviceMarca.editMarca(this.brand)
+        .subscribe(()=>{
+          this.brands = this.brands.map(br=>{
+            if (br.id_marca === this.brand.id_marca){
+              br = this.brand
+            }
+            return br
+          });
+          this.messageService.add({severity:'success', summary: 'Actualizado correcto', detail: 'Se ha actualizado la marca', life: 3000});
 
+        });
 
+    } else {
+      console.log('no existe')
+      this.serviceMarca.saveMarca(this.brand)
+        .subscribe(resp =>{
+        console.log(resp.toString()) //no llega
+        this.brands.push(this.brand)
+
+        this.messageService.add({severity:'success', summary: 'Registro correcto', detail: 'Se ha registrado la marca', life: 3000});
+      })
+    }
+    this.hideDialog()
   }
 
   editBrand(brand: Marca){
+    this.brand = {...brand};
+    this.brandDialog = true;
 
   }
+
 
   deleteBrand( brand: Marca){
     this.confirmationService.confirm({
@@ -88,6 +114,10 @@ export class TableComponentComponent implements OnInit {
     })
 
   }
+  getCellphones(brand: Marca){
+
+  }
+
   applyFilterGlobal($event: any, stringVal: string) {
     this.dt!.filterGlobal(($event.target as HTMLInputElement).value, 'contains');
   }

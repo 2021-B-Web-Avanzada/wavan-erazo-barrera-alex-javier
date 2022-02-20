@@ -22,12 +22,20 @@ export class MarcaServiceService {
     const httpOptions = {
       headers: new HttpHeaders({'Content-Type': 'application/json'})
     }
-    return this.http.post(this.url+'/api', JSON.stringify(marca), httpOptions)
+    console.log(`La marca: ${JSON.stringify(marca)}`)
+    return this.http.post(this.url+'/api', JSON.stringify(marca), {...httpOptions,
+      responseType: 'text'})
   }
 
   deleteMarca(id_marca: string){
+    return this.http.delete(this.url+'/api/' + id_marca, {responseType: 'text'})
+  }
 
-    return this.http.delete(this.url+'/api/' + id_marca)
+  editMarca(marca: Marca){
+    const httpOptions = {
+      headers: new HttpHeaders({'Content-Type': 'application/json'})
+    }
+    return this.http.put(this.url+'/api/' + marca.id_marca, JSON.stringify(marca), {...httpOptions, responseType: 'text'})
   }
 
 }
