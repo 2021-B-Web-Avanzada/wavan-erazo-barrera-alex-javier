@@ -16,6 +16,7 @@ import {RatingModule} from 'primeng/rating'
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { CelularesModule } from '../celulares/celulares.module';
 
 
 @NgModule({
@@ -38,6 +39,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     FileUploadModule,
     RatingModule,
     FormsModule,
+    CelularesModule //REVISAR
     //BrowserModule,
     //BrowserAnimationsModule
   ]

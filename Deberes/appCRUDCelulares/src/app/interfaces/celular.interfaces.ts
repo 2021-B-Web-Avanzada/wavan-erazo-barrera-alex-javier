@@ -8,13 +8,13 @@
 // match the expected interface, even if the JSON is valid.
 
 export interface Celular {
-  id_celular: number;
-  nombre:     string;
-  precio:     number;
-  es_actual:  number;
-  imei:       number;
-  serial:     string;
-  id_marca:   number;
+  id_celular?: number;
+  nombre?:     string;
+  precio?:     number;
+  es_actual?:  number;
+  imei?:       number;
+  serial?:     string;
+  id_marca?:   number;
 }
 
 // Converts JSON strings to/from your types
