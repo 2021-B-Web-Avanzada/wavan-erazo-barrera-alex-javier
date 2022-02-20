@@ -4,13 +4,10 @@
   <p-toolbar styleClass="mb-4">
       <ng-template pTemplate="left">
           <button pButton pRipple label="Nueva" icon="pi pi-plus" class="p-button-success mr-2" (click)="openNew()"></button>
-          <button pButton pRipple [label]="'Borrar'" icon="pi pi-trash" class="p-button-danger" (click)="deleteSelectedBrand()" [disabled]="!selectedBrands || !selectedBrands.length"></button>
+
       </ng-template>
 
-      <ng-template pTemplate="right">
-          <p-fileUpload mode="basic" accept="image/*" [maxFileSize]="1000000" label="Import" chooseLabel="Import" class="mr-2 inline-block"></p-fileUpload>
-          <button pButton pRipple label="Export" icon="pi pi-upload" class="p-button-help"></button>
-      </ng-template>
+
   </p-toolbar>
 
   <p-table #dt [value]="brands" [rows]="10" [paginator]="true" [globalFilterFields]="['name','country.name','representative.name','status']" responsiveLayout="scroll"
@@ -30,12 +27,12 @@
               <th style="width: 3rem">
                   <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
               </th>
-              <th pSortableColumn="name">Nombre <p-sortIcon field="name"></p-sortIcon></th>
+              <th pSortableColumn="name">Nombre </th>
               <th>Nacional</th>
-              <th pSortableColumn="price">Precio Acción <p-sortIcon field="price"></p-sortIcon></th>
-              <th pSortableColumn="category">Año Creación <p-sortIcon field="category"></p-sortIcon></th>
-              <th pSortableColumn="rating">Acciones <p-sortIcon field="rating"></p-sortIcon></th>
-              <th pSortableColumn="inventoryStatus">Celulares <p-sortIcon field="inventoryStatus"></p-sortIcon></th>
+              <th pSortableColumn="price">Precio Acción</th>
+              <th pSortableColumn="category">Año Creación </th>
+              <th pSortableColumn="rating">Acciones</th>
+              <th pSortableColumn="inventoryStatus">Celulares </th>
               <th></th>
           </tr>
       </ng-template>

@@ -128,4 +128,8 @@ export class CelularesTableComponent implements OnInit {
      this.dt!.filterGlobal(($event.target as HTMLInputElement).value, 'contains');
    }
 
+   regresarMarcas(){
+     this.router.navigate(['/marcas'])
+   }
+
 }
