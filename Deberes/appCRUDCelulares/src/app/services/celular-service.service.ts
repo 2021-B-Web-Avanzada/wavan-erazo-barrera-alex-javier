@@ -20,7 +20,14 @@ export class CelularServiceService {
     const httpOptions = {
       headers: new HttpHeaders({'Content-Type': 'application/json'})
     }
-    return this.http.post(`${this.url}/api/${cell.id_marca}`, JSON.stringify(cell), {...httpOptions,
+    const cell_ed = {
+      nombre: cell.nombre,
+      precio: cell.precio,
+      es_actual: cell.es_actual,
+      imei: cell.imei,
+      serial: cell.serial
+    }
+    return this.http.post(`${this.url}/api/${cell.id_marca}`, JSON.stringify(cell_ed), {...httpOptions,
       responseType: 'text'})
 
   }
@@ -33,7 +40,14 @@ export class CelularServiceService {
     const httpOptions = {
       headers: new HttpHeaders({'Content-Type': 'application/json'})
     }
-    return this.http.put(`${this.url}/api/${cell.id_marca}/${cell.id_celular}`, JSON.stringify(cell), {...httpOptions, responseType: 'text'})
+    const cell_ed = {
+      nombre: cell.nombre,
+      precio: cell.precio,
+      es_actual: cell.es_actual,
+      imei: cell.imei,
+      serial: cell.serial
+    }
+    return this.http.put(`${this.url}/api/${cell.id_marca}/${cell.id_celular}`, JSON.stringify(cell_ed), {...httpOptions, responseType: 'text'})
   }
 
 }

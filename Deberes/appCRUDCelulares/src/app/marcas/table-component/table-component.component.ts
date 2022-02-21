@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { ConfirmationService, MessageService } from 'primeng/api';
 import { Table } from 'primeng/table';
@@ -13,12 +13,13 @@ import { MarcaServiceService } from 'src/app/services/marca-service.service';
 
 })
 export class TableComponentComponent implements OnInit {
-  @ViewChild('dt') dt: Table | undefined;
+  @ViewChild('txtBuscar') dt!: ElementRef<HTMLInputElement>;
   brands: Marca[] = [];
   selectedBrands: Marca[] = [];
   brand!: Marca;
   brandDialog?: boolean;
   submitted?: boolean;
+  copy_brands: Marca[] = [];
   es_nacionalOptions = [
     {label: 'SI', value: true},
     {label: 'NO', value: false}
@@ -48,7 +49,6 @@ export class TableComponentComponent implements OnInit {
   }
 
   deleteSelectedBrand(){
-
   }
 
   hideDialog(){
@@ -123,7 +123,26 @@ export class TableComponentComponent implements OnInit {
   }
 
   applyFilterGlobal($event: any, stringVal: string) {
-    this.dt!.filterGlobal(($event.target as HTMLInputElement).value, 'contains');
+    // this.dt!.filterGlobal(($event.target as HTMLInputElement).value, 'contains');
+
+  }
+  buscarMarca(){
+  //   const valor = this.dt!.nativeElement.value;
+  //   console.log(valor)
+  //   this.copy_brands = {...this.brands}
+  //   const brand_temp: Marca[] = [];
+  //   if(valor.length != 0){
+  //     this.brands.map(val =>{
+  //       if(!val.nombre!.toLowerCase().startsWith(valor)){
+  //         brand_temp.push(val)
+  //       }
+  //     })
+  //     this.brands = {...brand_temp}
+
+  //   } else {
+  //     this.brands = {...this.copy_brands}
+  //   }
+  //     console.log(this.brands)
   }
 
 }

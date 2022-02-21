@@ -37,8 +37,8 @@ export class CelularesTableComponent implements OnInit {
   ngOnInit(): void {
     this.route.queryParams
       .subscribe(params =>{
-        console.log(`Id recuperado: ${params['id']}`)
         this.id_marca_param = params['id']
+        console.log(`Id recuperado: ${this.id_marca_param}`)
       })
     this.serviceCelular.getCelulares(this.id_marca_param!).subscribe(res=>{
       this.cellphones = res
@@ -46,8 +46,8 @@ export class CelularesTableComponent implements OnInit {
   }
   openNew(){
     this.cellphone = {}
-     this.submitted = false;
-     this.cellphoneDialog = true;
+    this.submitted = false;
+    this.cellphoneDialog = true;
 
 
    }
@@ -78,7 +78,7 @@ export class CelularesTableComponent implements OnInit {
          .subscribe(()=>{
            this.cellphones = this.cellphones.map(br=>{
              if (br.id_celular === this.cellphone.id_celular){
-               br = this.cellphone
+              br = this.cellphone
              }
              return br
            });
@@ -88,13 +88,16 @@ export class CelularesTableComponent implements OnInit {
 
      } else {
       //  console.log('no existe')
-       this.serviceCelular.saveCelular(this.cellphone)
-         .subscribe(resp =>{
-        //  console.log(resp.toString()) //no llega
-         this.cellphones.push(this.cellphone)
+      // this.cellphone.id_marca = this.id_marca_param
+      // this.cellphone
+      // console.log(this.cellphone)
+      this.serviceCelular.saveCelular(this.cellphone)
+        .subscribe(resp =>{
+        console.log(resp.toString()) //no llega
+        this.cellphones.push(this.cellphone)
 
-         this.messageService.add({severity:'success', summary: 'Registro correcto', detail: 'Se ha registrado el celular', life: 3000});
-       })
+        this.messageService.add({severity:'success', summary: 'Registro correcto', detail: 'Se ha registrado el celular', life: 3000});
+      })
      }
      this.hideDialog()
    }

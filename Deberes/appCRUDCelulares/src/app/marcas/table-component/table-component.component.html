@@ -18,7 +18,7 @@
               <h5>Gestionar Marcas</h5>
               <span class="input-icons">
                   <i class="pi pi-search icon"></i>
-                  <input class="input-field form-control" pInputText type="text" (input)="dt.filterGlobal($event, 'contains')" placeholder="Buscar..."/>
+                  <input class="input-field form-control" pInputText type="text" (keyup.enter)="buscarMarca()" placeholder="Buscar..." #txtBuscar/>
               </span>
           </div>
       </ng-template>
@@ -41,6 +41,7 @@
               <td>
                   <p-tableCheckbox [value]="brand"></p-tableCheckbox>
               </td>
+              
               <td>{{brand.nombre}}</td>
               <td>{{brand.es_nacional}}</td>
               <td>{{brand.acciones}}</td>
